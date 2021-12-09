@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: video-streaming-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: video-streaming-deployment
+  template:
+    metadata:
+      labels:
+        app: video-streaming-deployment
+        # The label matches the Service's label selector
+    spec:
+      containers:
+      - name: video-streaming-container
+        image: grupo1sd.azurecr.io/video-streaming:2.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+      - name: grupo1sdsec
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: video-streaming-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+  selector:
+    app: video-streaming-deployment
