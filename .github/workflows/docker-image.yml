@@ -20,7 +20,6 @@ jobs:
            version: latest
            
     - name: Build the Docker image
-      run: docker buildx build --file Dockerfile \
+      run: docker buildx build \
           --platform=linux/arm/v7 \
-          --tag 2044318/video-streaming:$(date +%s) \
-          ./video-streaming-example-master
+          -t 2044318/video-streaming:$(date +%s) ./video-streaming-example-master
