@@ -4,4 +4,4 @@ kubectl create secret docker-registry grupo1sdsec \
     --docker-username=grupo1sd \
     --docker-password=8N6XMw9=1p10b+=Xtbekyvj7CYqWEvZc
 	
-	
+	757a7413-c51f-4cf1-9611-37a89a7122a0

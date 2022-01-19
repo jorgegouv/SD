@@ -3,3 +3,5 @@ kubectl create secret docker-registry grupo1sdsec \
     --docker-server=grupo1sd.azurecr.io \
     --docker-username=grupo1sd \
     --docker-password=8N6XMw9=1p10b+=Xtbekyvj7CYqWEvZc
+	
+	
