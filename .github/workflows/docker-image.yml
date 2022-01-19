@@ -20,4 +20,4 @@ jobs:
            version: latest
     - run: echo "757a7413-c51f-4cf1-9611-37a89a7122a0" | docker login -u 2044318 --password-stdin
     - name: Build the Docker image
-      run: docker buildx build --platform=linux/arm/v7 -t 2044318/video-streaming:$(date +%s) ./video-streaming-example-master
+      run: docker buildx build --push --platform=linux/arm/v7 -t 2044318/video-streaming:$(date +%s) ./video-streaming-example-master
