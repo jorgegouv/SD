@@ -18,6 +18,6 @@ jobs:
       uses: crazy-max/ghaction-docker-buildx@v1
       with:
            version: latest
-    - run: echo "757a7413-c51f-4cf1-9611-37a89a7122a0" | docker login grupo1sd2.azurecr.io -u grupo1sd2 --password-stdin wbPEF6xax7oAW4Gqxf6=SbpjDusks2vo
+    - run: echo "757a7413-c51f-4cf1-9611-37a89a7122a0" | docker login grupo1sd2.azurecr.io -u grupo1sd2 --password wbPEF6xax7oAW4Gqxf6=SbpjDusks2vo
     - name: Build the Docker image
       run: docker buildx build --push --platform=linux/arm/v7,linux/amd64 -t  grupo1sd2.azurecr.io/video-streaming:$(date +%s) ./video-streaming-example-master
