@@ -3,7 +3,13 @@ kind: Deployment
 metadata:
   name: video-streaming-deployment
 spec:
-  replicas: 1
+  replicas: 3
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+        maxUnavailable: 1
+        maxSurge: 1
   selector:
     matchLabels:
       app: video-streaming-deployment
@@ -16,11 +22,11 @@ spec:
       containers:
       - name: video-streaming-container
         image: grupo1sd.azurecr.io/video-streaming:2.1
-        #command: ["npm", "start"]
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
-      
+      imagePullSecrets:
+      - name: grupo1sdsec
 
 
 ---
@@ -35,4 +41,4 @@ spec:
     targetPort: 3000
     protocol: TCP
   selector:
-    app: video-streaming-service
+    app: video-streaming-deployment
