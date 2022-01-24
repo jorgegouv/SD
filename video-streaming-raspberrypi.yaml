@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: video-streaming-deployment
+spec:
+  replicas: 3
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+        maxUnavailable: 1
+        maxSurge: 1
+  selector:
+    matchLabels:
+      app: video-streaming-deployment
+  template:
+    metadata:
+      labels:
+        app: video-streaming-deployment
+        # The label matches the Service's label selector
+    spec:
+      containers:
+      - name: video-streaming-container
+        image: grupo1sd2.azurecr.io/video-streaming:1642958810
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+      - name: grupo1sdsec
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: video-streaming-service
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+    nodePort: 30001
+  selector:
+    app: video-streaming-deployment
