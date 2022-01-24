@@ -1,2 +1,2 @@
-Caso queiram obter a imagem diretamente para o kubectl, no comando.txt está presente o comando que devem executar primeiro antes de executar o ficheiro yaml.
+Caso queiram usar a imagem do nosso repositório para o kubectl, no comando.txt está presente o comando que devem executar primeiro antes de executar o ficheiro yaml.
 Também está presente um ficheiro .yaml para o github actions na pasta .github para criarem uma imagem compatível com o AKS(Azure Kubernetes Service) e o Raspberry pi. Só precisem de mudar o container registry para que seja mandado para a vossa base de dados
