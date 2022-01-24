@@ -21,8 +21,7 @@ spec:
     spec:
       containers:
       - name: video-streaming-container
-        image: grupo1sd.azurecr.io/video-streaming:2.1
-        imagePullPolicy: IfNotPresent
+        image: grupo1sd2.azurecr.io/video-streaming:1642594241
         ports:
         - containerPort: 3000
       imagePullSecrets:
